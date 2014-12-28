@@ -18,7 +18,6 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 
 	protected Library() throws RemoteException {
 		map = new ConcurrentHashMap<Long, IBook>();
-
 	}
 
 

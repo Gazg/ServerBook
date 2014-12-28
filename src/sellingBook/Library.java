@@ -63,7 +63,6 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 	@Override
 	public void addBook(Long isbn, String title, String author, Double price)
 			throws RemoteException {
-		System.out.println("add book");
 		map.put(isbn,new Book(title,author,isbn,price));
 
 	}

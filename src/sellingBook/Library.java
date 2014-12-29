@@ -27,8 +27,6 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 		return map.get(ISBN);
 	}
 
-
-
 	@Override
 	public IBook removeBook(Long ISBN) throws RemoteException {
 		return map.remove(ISBN);

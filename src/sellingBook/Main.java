@@ -40,11 +40,6 @@ public class Main {
 			System.out.println("Not bound exeption");
 			e1.printStackTrace();
 		}
-		
-		
+
 	}
-
-
-
-
 }

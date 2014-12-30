@@ -31,7 +31,15 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 	@Override
 	public IBook removeBook(Long ISBN) throws RemoteException {
 		System.out.println("\nRemove Book ISBN: " + ISBN.toString());
-		return map.remove(ISBN);
+		IBook b = map.get(ISBN);
+		if(b!=null){
+			b.setStock(b.getStock()-1);
+			if(b.getStock() <=0){
+				map.remove(ISBN);
+			}
+			return b;
+		}
+		return null;
 	}
 
 	@Override
@@ -64,11 +72,15 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 	}
 
 	@Override
-	public void addBook(Long isbn, String title, String author, Double price)
+	public void addBook(Long isbn, String title, String author, Double price,Integer NbExemplaire)
 			throws RemoteException {
 		System.out.println("\nAdd a book");
-		map.put(isbn,new Book(title,author,isbn,price));
-
+		IBook b = map.get(isbn);
+		if(b!=null){
+			b.setStock(b.getStock()+NbExemplaire);
+		}else{
+			map.put(isbn,new Book(title,author,isbn,price, NbExemplaire));
+		}
 	}
 
 	@Override
@@ -97,13 +109,30 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 		System.out.println("\nGet Books that contain : " + title);
 		ArrayList<IBook> books = new ArrayList<IBook>();
 		for(Entry <Long, IBook> entry : map.entrySet()) {
-			Long isbn = entry.getKey();
 			IBook b = entry.getValue();
 			if (b.getTitle().contains(title))
 				System.out.println("Book found : " + b.getTitle());
 				books.add(b);
 		}
 		return books;
+	}
+
+
+
+	@Override
+	public boolean contains(Long ISBN) throws RemoteException {
+		IBook b = map.get(ISBN);
+		if(b==null)
+			return false;
+		else
+			return true;
+	}
+
+
+
+	@Override
+	public int NbLivre() throws RemoteException {
+		return map.size();
 	}
 
 

@@ -10,18 +10,20 @@ public class Book extends UnicastRemoteObject implements IBook{
 	private String author;
 	private Long isbn;
 	private Double price;
+	private Integer stock;
 	
 	
 	public Book() throws RemoteException{
 		super();
 	}
 	
-	public Book(String title,String author, Long isbn, Double price) throws RemoteException{
+	public Book(String title,String author, Long isbn, Double price, int NbExemplaire) throws RemoteException{
 		super();
 		this.title=title;
 		this.author=author;
 		this.isbn=isbn;
 		this.price = price;
+		this.stock = NbExemplaire;
 	}
 
 	
@@ -39,4 +41,20 @@ public class Book extends UnicastRemoteObject implements IBook{
 	public Double getPrice() throws RemoteException {
 		return price;
 	}
+
+	@Override
+	public int getStock() throws RemoteException {
+		return stock;
+	}
+
+	@Override
+	public void setStock(Integer stock) throws RemoteException {
+		this.stock = stock;
+	}
+	
+
+
+
+	
+	
 }

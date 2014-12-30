@@ -17,7 +17,6 @@ public class Main {
 			System.setSecurityManager(new RMISecurityManager());
 			}
 		System.setProperty("java.rmi.server.codebase", "http://localhost:8080/RMIWebServices/bin/");
-		System.setProperty("java.security.policy","sec.policy");
 		System.setProperty("java.rmi.server.useCodebaseOnly ", "false");
 		ILibraries lib;
 		Library libServer = new Library();

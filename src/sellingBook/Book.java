@@ -43,7 +43,7 @@ public class Book extends UnicastRemoteObject implements IBook{
 	}
 
 	@Override
-	public int getStock() throws RemoteException {
+	public Integer getStock() throws RemoteException {
 		return stock;
 	}
 

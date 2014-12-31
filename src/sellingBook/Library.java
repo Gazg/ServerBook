@@ -131,7 +131,7 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 
 
 	@Override
-	public int NbLivre() throws RemoteException {
+	public Integer NbLivre() throws RemoteException {
 		return map.size();
 	}
 

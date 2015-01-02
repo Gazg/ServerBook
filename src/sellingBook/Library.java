@@ -48,9 +48,10 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 		ArrayList<IBook> books = new ArrayList<IBook>();
 		for(Entry <Long, IBook> entry : map.entrySet()) {
 			IBook b = entry.getValue();
-			if (b.getAuthor().equals(author))
+			if (b.getAuthor().toLowerCase().contains(author.toLowerCase())) {
 				System.out.println("Book found : " + b.getTitle());
 				books.add(b);
+			}
 		}
 		return books;
 	}
@@ -97,9 +98,10 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 		for(Entry <Long, IBook> entry : map.entrySet()) {
 			Long isbn = entry.getKey();
 			IBook b = entry.getValue();
-			if (b.getTitle().equals(title))
+			if (b.getTitle().toLowerCase().equals(title.toLowerCase())) {
 				System.out.println("Book found : " + b.getTitle());
 				return b;
+			}
 		}
 		return null;
 	}
@@ -110,9 +112,10 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 		ArrayList<IBook> books = new ArrayList<IBook>();
 		for(Entry <Long, IBook> entry : map.entrySet()) {
 			IBook b = entry.getValue();
-			if (b.getTitle().contains(title))
+			if (b.getTitle().contains(title)) {
 				System.out.println("Book found : " + b.getTitle());
 				books.add(b);
+			}
 		}
 		return books;
 	}

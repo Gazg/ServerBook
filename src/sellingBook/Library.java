@@ -112,7 +112,7 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 		ArrayList<IBook> books = new ArrayList<IBook>();
 		for(Entry <Long, IBook> entry : map.entrySet()) {
 			IBook b = entry.getValue();
-			if (b.getTitle().contains(title)) {
+			if (b.getTitle().toLowerCase().contains(title.toLowerCase())) {
 				System.out.println("Book found : " + b.getTitle());
 				books.add(b);
 			}

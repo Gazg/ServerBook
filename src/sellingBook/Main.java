@@ -16,17 +16,15 @@ public class Main {
 		if (System.getSecurityManager() == null) {
 			System.setSecurityManager(new RMISecurityManager());
 			}
+		
+		System.setProperty("java.rmi.server.codebase", "http://localhost:8080/RMIWebServices/bin/");
+		System.setProperty("java.rmi.server.useCodebaseOnly ", "false");
 		ILibraries lib;
 		Library libServer = new Library();
-
-		
 		try {
 			lib = (ILibraries) Naming.lookup("rmi://localhost/Libraries");
 			System.out.println("Inscription au aupres du serveur de librairies");
 			lib.subscribe(libServer);
-			
-		
-
 		} catch (MalformedURLException e1) {
 			System.out.println("Malformed url");
 			e1.printStackTrace();
@@ -37,6 +35,5 @@ public class Main {
 			System.out.println("Not bound exeption");
 			e1.printStackTrace();
 		}
-
 	}
 }

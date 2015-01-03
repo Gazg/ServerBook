@@ -67,7 +67,7 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 
 	@Override
 	public void addBook(IBook book) throws RemoteException {
-		System.out.println("\nAdd a book");
+		System.out.println("\nAdd a book : Title " + book.getTitle());
 		map.put(book.getISBN(), book);
 
 	}
@@ -75,7 +75,7 @@ public class Library  extends UnicastRemoteObject implements ILibrary{
 	@Override
 	public void addBook(Long isbn, String title, String author, Double price,Integer NbExemplaire)
 			throws RemoteException {
-		System.out.println("\nAdd a book");
+		System.out.println("\nAdd a book : Titre =\"" + title + "\" Author=\""  +author+"\"");
 		IBook b = map.get(isbn);
 		if(b!=null){
 			b.setStock(b.getStock()+NbExemplaire);

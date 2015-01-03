@@ -23,7 +23,7 @@ public class Main {
 		Library libServer = new Library();
 		try {
 			lib = (ILibraries) Naming.lookup("rmi://localhost/Libraries");
-			System.out.println("Inscription au aupres du serveur de librairies");
+			System.out.println("Inscription aupres du serveur de librairies");
 			lib.subscribe(libServer);
 		} catch (MalformedURLException e1) {
 			System.out.println("Malformed url");
